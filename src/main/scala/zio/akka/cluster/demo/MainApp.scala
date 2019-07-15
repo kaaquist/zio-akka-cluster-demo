@@ -23,7 +23,7 @@ object MainApp extends App {
             _        <- console.putStrLn("Hi! What's your name? (Type [exit] to stop)")
             name     <- console.getStrLn
             _        <- ZIO.when(name.toLowerCase == "exit" || name.trim.isEmpty)(ZIO.interrupt)
-            _        <- console.putStrLn("Hi! Which chatroom do you want to join? (Type [exit] to stop)")
+            _        <- console.putStrLn(s"Hi, $name! Which chatroom do you want to join? (Type [exit] to stop)")
             room     <- console.getStrLn
             _        <- ZIO.when(room.toLowerCase == "exit" || room.trim.isEmpty)(ZIO.interrupt)
             _        <- joinChat(name, room, actorSystem, sharding)
